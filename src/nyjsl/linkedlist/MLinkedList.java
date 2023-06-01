@@ -92,6 +92,24 @@ public class MLinkedList<T> {
         size++;
     }
 
+    /**
+     * 如果索引 index 有效，则删除链表中的第 index 个节点。
+     * @param index
+     */
+    public void deleteAtIndex(int index) {
+        if (index < 0 || index >= size) {
+            return;
+        }
+        ListNode pre = dummyHead;
+        for (int i = 0; i < index; i++) {
+            pre = pre.next;
+        }
+        ListNode cur = pre.next;
+        ListNode next = cur.next;
+        pre.next = next;
+        size--;
+    }
+
     public void print() {
         ListNode cur = dummyHead;
         for (int i = 0; i < size; i++) {
@@ -99,5 +117,7 @@ public class MLinkedList<T> {
             System.out.println(cur.data);
         }
     }
+
+
 
 }
