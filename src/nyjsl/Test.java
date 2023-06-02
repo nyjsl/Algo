@@ -10,6 +10,22 @@ public class Test {
 //        testMLinkedList();
 //        testReverse();
 //        testSwapPair();
+//        testDelectBack();
+
+        ListNode a = new ListNode("a");
+        ListNode b = new ListNode("b");
+        ListNode c = new ListNode("c");
+        ListNode d = new ListNode("d");
+        ListNode e = new ListNode("e");
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = e;
+        e.next = b;
+        ListNodeUtils.print(ListNodeUtils.detectCycle(a));
+    }
+
+    private static void testDelectBack() {
         ListNode a = new ListNode("a");
         a.next = new ListNode("b");
         a.next.next = new ListNode("c");

@@ -85,6 +85,32 @@ public class ListNodeUtils {
         return dummyHead.next;
     }
 
+    /**
+     *  给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
+     * @param head
+     * @return
+     */
+    public static ListNode detectCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            //有环
+            if (slow == fast) {
+                // 两个指针，从头结点和相遇结点，各走一步，直到相遇，相遇点即为环入口
+                ListNode a = fast;
+                ListNode b = head;
+                while (a != b) {
+                    a = a .next;
+                    b = b.next;
+                }
+                return a;
+            }
+        }
+        return null;
+    }
+
 
     public static void print(ListNode head) {
         while (null != head) {
