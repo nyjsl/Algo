@@ -1,8 +1,11 @@
 package nyjsl;
 
+import nyjsl.hashtable.IsAnagram;
 import nyjsl.linkedlist.ListNode;
 import nyjsl.linkedlist.ListNodeUtils;
 import nyjsl.linkedlist.MLinkedList;
+
+import java.util.Arrays;
 
 public class Test {
 
@@ -11,7 +14,14 @@ public class Test {
 //        testReverse();
 //        testSwapPair();
 //        testDelectBack();
+//        testDetectCycle();
 
+        System.out.println(IsAnagram.isAnagram("abc", "bca"));
+        System.out.println(IsAnagram.isAnagram("abc", "abc"));
+        System.out.println(IsAnagram.isAnagram("abc", "abca"));
+    }
+
+    private static void testDetectCycle() {
         ListNode a = new ListNode("a");
         ListNode b = new ListNode("b");
         ListNode c = new ListNode("c");
