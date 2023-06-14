@@ -20,6 +20,12 @@ public class Test {
 //        testHappyNo();
 //        testTwoSum();
 //        testReverseStr();
+        testReverse2k();
+    }
+
+    private static void testReverse2k() {
+        String src = new String("abcdefg");
+        System.out.println(StrUtils.reverse2K(src,2));
     }
 
     private static void testReverseStr() {
