@@ -1,5 +1,6 @@
 package nyjsl;
 
+import nyjsl.hashtable.HappyNum;
 import nyjsl.hashtable.IsAnagram;
 import nyjsl.linkedlist.ListNode;
 import nyjsl.linkedlist.ListNodeUtils;
@@ -15,7 +16,13 @@ public class Test {
 //        testSwapPair();
 //        testDelectBack();
 //        testDetectCycle();
+//        testAnagram();
 
+        System.out.println(HappyNum.isHappyNo(18));
+        System.out.println(HappyNum.isHappyNo(19));
+    }
+
+    private static void testAnagram() {
         System.out.println(IsAnagram.isAnagram("abc", "bca"));
         System.out.println(IsAnagram.isAnagram("abc", "abc"));
         System.out.println(IsAnagram.isAnagram("abc", "abca"));
