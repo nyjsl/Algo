@@ -2,11 +2,10 @@ package nyjsl;
 
 import nyjsl.hashtable.HappyNum;
 import nyjsl.hashtable.IsAnagram;
+import nyjsl.hashtable.TwoSum;
 import nyjsl.linkedlist.ListNode;
 import nyjsl.linkedlist.ListNodeUtils;
 import nyjsl.linkedlist.MLinkedList;
-
-import java.util.Arrays;
 
 public class Test {
 
@@ -17,7 +16,16 @@ public class Test {
 //        testDelectBack();
 //        testDetectCycle();
 //        testAnagram();
+//        testHappyNo();
+        int[] nums = new int[]{2, 7, 11, 15};
+        int target = 9;
+        int[] x = TwoSum.twoSum(nums, target);
+        for (int i = 0; i < x.length; i++) {
+            System.out.println(x[i]);
+        }
+    }
 
+    private static void testHappyNo() {
         System.out.println(HappyNum.isHappyNo(18));
         System.out.println(HappyNum.isHappyNo(19));
     }
