@@ -6,6 +6,7 @@ import nyjsl.hashtable.TwoSum;
 import nyjsl.linkedlist.ListNode;
 import nyjsl.linkedlist.ListNodeUtils;
 import nyjsl.linkedlist.MLinkedList;
+import nyjsl.str.StrUtils;
 
 public class Test {
 
@@ -17,6 +18,19 @@ public class Test {
 //        testDetectCycle();
 //        testAnagram();
 //        testHappyNo();
+//        testTwoSum();
+//        testReverseStr();
+    }
+
+    private static void testReverseStr() {
+        char[] h = new char[]{'h','e','l','l','o'};
+        StrUtils.reverse(h);
+        for (int i = 0; i < h.length; i++) {
+            System.out.println(h[i]);
+        }
+    }
+
+    private static void testTwoSum() {
         int[] nums = new int[]{2, 7, 11, 15};
         int target = 9;
         int[] x = TwoSum.twoSum(nums, target);
