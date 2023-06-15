@@ -20,7 +20,8 @@ public class Test {
 //        testHappyNo();
 //        testTwoSum();
 //        testReverseStr();
-        testReverse2k();
+//        testReverse2k();
+        System.out.println(StrUtils.replaceSpace("We are happy."));
     }
 
     private static void testReverse2k() {
