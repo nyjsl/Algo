@@ -1,5 +1,7 @@
 package nyjsl;
 
+import nyjsl.binarytree.BinaryTreeUtils;
+import nyjsl.binarytree.TreeNode;
 import nyjsl.hashtable.HappyNum;
 import nyjsl.hashtable.IsAnagram;
 import nyjsl.hashtable.TwoSum;
@@ -7,6 +9,9 @@ import nyjsl.linkedlist.ListNode;
 import nyjsl.linkedlist.ListNodeUtils;
 import nyjsl.linkedlist.MLinkedList;
 import nyjsl.str.StrUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Test {
 
@@ -21,7 +26,58 @@ public class Test {
 //        testTwoSum();
 //        testReverseStr();
 //        testReverse2k();
-        System.out.println(StrUtils.replaceSpace("We are happy."));
+//        System.out.println(StrUtils.replaceSpace("We are happy."));
+
+        testTreeTraversalRecursion();
+
+    }
+
+    /**
+     * 测试使用递归方法进行二叉树的遍历
+     */
+    private static void testTreeTraversalRecursion() {
+        TreeNode<String> root = buildTestTree();
+        ArrayList result = new ArrayList();
+        BinaryTreeUtils.preOrderRecursion(result,root);
+        CommonUtils.printList(result);
+        result.clear();
+        System.out.println();
+        BinaryTreeUtils.inOrderRecursion(result,root);
+        CommonUtils.printList(result);
+        result.clear();
+        System.out.println();
+        BinaryTreeUtils.afterOrderRecursion(result,root);
+        CommonUtils.printList(result);
+        result.clear();
+        System.out.println();
+    }
+
+    /**
+     *                       A
+     *                 B          C
+     *             E      F          D
+     *                  G
+     *          前序遍历结果    A   B  E  F  G  C  D
+     *          中序遍历结果    E   B  G  F  A  C  D
+     *          后序遍历结果    E   G  F  B  D  C  A
+     *
+     * @return
+     */
+    private static TreeNode<String> buildTestTree() {
+        TreeNode<String> a = new TreeNode<>("A");
+        TreeNode<String> b = new TreeNode<>("B");
+        TreeNode<String> c = new TreeNode<>("C");
+        TreeNode<String> d = new TreeNode<>("D");
+        TreeNode<String> e = new TreeNode<>("E");
+        TreeNode<String> f = new TreeNode<>("F");
+        TreeNode<String> g = new TreeNode<>("G");
+        f.left = g;
+        b.left = e;
+        b.right = f;
+        c.right =d;
+        a.left = b;
+        a.right = c;
+        return a;
     }
 
     private static void testReverse2k() {

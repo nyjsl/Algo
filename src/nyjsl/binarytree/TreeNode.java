@@ -25,5 +25,22 @@ package nyjsl.binarytree;
  *          广度优先遍历 ,一层一层的去遍历
  *              层次遍历
  */
-public class Tree {
+public class TreeNode<T> {
+
+    public T val;
+
+    public TreeNode left;
+
+    public TreeNode right;
+
+
+    public TreeNode(T val) {
+        this.val = val;
+    }
+
+    public TreeNode(T val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
 }
