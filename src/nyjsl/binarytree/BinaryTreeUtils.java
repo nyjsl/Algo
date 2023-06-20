@@ -62,15 +62,14 @@ public class BinaryTreeUtils {
      * @param <T> 泛型
      */
     public static  <T> void preOrderTraversal(List<T> result, TreeNode<T> root){
+        if (null == root) {
+            return;
+        }
         Stack<TreeNode<T>> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()) {
             TreeNode<T> pop = stack.pop();
-            if (null != pop) {
-                result.add(pop.val);
-            }else{
-                continue;
-            }
+            result.add(pop.val);
             if (null != pop.right) {
                 stack.add(pop.right);
             }
