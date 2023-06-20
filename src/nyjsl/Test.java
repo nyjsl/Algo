@@ -28,8 +28,12 @@ public class Test {
 //        testReverse2k();
 //        System.out.println(StrUtils.replaceSpace("We are happy."));
 
-        testTreeTraversalRecursion();
-
+//        testTreeTraversalRecursion();
+        TreeNode<String> root = buildTestTree();
+        ArrayList result = new ArrayList();
+        BinaryTreeUtils.preOrderTraversal(result,root);
+        CommonUtils.printList(result);
+        result.clear();
     }
 
     /**

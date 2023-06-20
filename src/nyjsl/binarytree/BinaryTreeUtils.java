@@ -3,6 +3,7 @@ package nyjsl.binarytree;
 
 
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 二叉树的遍历
@@ -52,5 +53,30 @@ public class BinaryTreeUtils {
         afterOrderRecursion(result,root.left);
         afterOrderRecursion(result,root.right);
         result.add(root.val);
+    }
+
+    /**
+     * 前序遍历
+     * @param result 遍历结果
+     * @param root 根结点
+     * @param <T> 泛型
+     */
+    public static  <T> void preOrderTraversal(List<T> result, TreeNode<T> root){
+        Stack<TreeNode<T>> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode<T> pop = stack.pop();
+            if (null != pop) {
+                result.add(pop.val);
+            }else{
+                continue;
+            }
+            if (null != pop.right) {
+                stack.add(pop.right);
+            }
+            if (null != pop.left) {
+                stack.add(pop.left);
+            }
+        }
     }
 }
