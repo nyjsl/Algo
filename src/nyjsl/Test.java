@@ -34,6 +34,10 @@ public class Test {
         BinaryTreeUtils.preOrderTraversal(result,root);
         CommonUtils.printList(result);
         result.clear();
+        System.out.println();
+        BinaryTreeUtils.afterOrderTraversal(result,root);
+        CommonUtils.printList(result);
+        result.clear();
     }
 
     /**

@@ -2,6 +2,7 @@ package nyjsl.binarytree;
 
 
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -56,7 +57,7 @@ public class BinaryTreeUtils {
     }
 
     /**
-     * 前序遍历
+     * 前序遍历 (栈模拟)
      * @param result 遍历结果
      * @param root 根结点
      * @param <T> 泛型
@@ -77,5 +78,30 @@ public class BinaryTreeUtils {
                 stack.add(pop.left);
             }
         }
+    }
+
+    /**
+     * 后续遍历, 前序遍历 更改左右入栈顺序,然后翻转
+     * @param result 遍历结果
+     * @param root 根结点
+     * @param <T> 泛型
+     */
+    public static <T> void afterOrderTraversal(List<T> result, TreeNode<T> root) {
+        if (null == root) {
+            return;
+        }
+        Stack<TreeNode<T>> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode<T> pop = stack.pop();
+            result.add(pop.val);
+            if (null != pop.left) {
+                stack.push(pop.left);
+            }
+            if (null != pop.right) {
+                stack.push(pop.right);
+            }
+        }
+        Collections.reverse(result);
     }
 }
