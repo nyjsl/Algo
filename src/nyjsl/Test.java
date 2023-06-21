@@ -11,7 +11,6 @@ import nyjsl.linkedlist.MLinkedList;
 import nyjsl.str.StrUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Test {
 
@@ -38,6 +37,11 @@ public class Test {
         BinaryTreeUtils.afterOrderTraversal(result,root);
         CommonUtils.printList(result);
         result.clear();
+        System.out.println();
+        BinaryTreeUtils.inOrderTraversal(result,root);
+        CommonUtils.printList(result);
+        result.clear();
+        System.out.println();
     }
 
     /**

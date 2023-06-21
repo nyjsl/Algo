@@ -104,4 +104,28 @@ public class BinaryTreeUtils {
         }
         Collections.reverse(result);
     }
+
+    /**
+     * 中序  入栈顺序左右
+     * * @param result 遍历结果
+     * @param root 根结点
+     * @param <T> 泛型
+     */
+    public static <T> void inOrderTraversal(List<T> result, TreeNode<T> root) {
+        if (null == root) {
+            return;
+        }
+        TreeNode<T> cur = root;
+        Stack<TreeNode<T>> stack = new Stack<>();
+        while (null != cur || !stack.isEmpty()) {
+            if (null != cur) {
+                stack.push(cur);
+                cur = cur.left;
+            }else{
+                cur = stack.pop();
+                result.add(cur.val);
+                cur = cur.right;
+            }
+        }
+    }
 }
