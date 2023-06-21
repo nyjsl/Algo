@@ -2,11 +2,8 @@ package nyjsl.binarytree;
 
 
 
-import apple.laf.JRSUIUtils;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 二叉树的遍历
@@ -146,6 +143,45 @@ public class BinaryTreeUtils {
         root.right = temp;
         invertTree(root.left);
         invertTree(root.right);
+        return root;
+    }
+
+    /**
+     * 迭代法翻转二叉树
+     * @param root 源二叉树
+     * @return 结果二叉树
+     * @param <T> 泛型
+     */
+    public static <T> TreeNode<T> invertTreeTraversal(TreeNode<T> root) {
+        if (null == root) {
+            return root;
+        }
+        Stack<TreeNode<T>> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode<T> cur = stack.pop();
+            TreeNode temp = cur.left;
+            cur.left = cur.right;
+            cur.right = temp;
+            if (null != cur.right) {
+                stack.push(cur.right);
+            }
+            if (null != cur.left) {
+                stack.push(cur.left);
+            }
+        }
+        return root;
+    }
+
+    public static <T> TreeNode<T> invertTreeLevel(TreeNode<T> root) {
+        if (null == root) {
+            return root;
+        }
+        Queue<TreeNode<T>> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+
+        }
         return root;
     }
 

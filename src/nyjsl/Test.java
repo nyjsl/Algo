@@ -34,6 +34,13 @@ public class Test {
         ArrayList result = new ArrayList();
         BinaryTreeUtils.preOrderTraversal(result,root);
         CommonUtils.printList(result);
+        result.clear();
+        System.out.println();
+        root = BinaryTreeUtils.invertTreeTraversal(root);
+        BinaryTreeUtils.preOrderTraversal(result,root);
+        CommonUtils.printList(result);
+        result.clear();
+        System.out.println();
 
     }
 
