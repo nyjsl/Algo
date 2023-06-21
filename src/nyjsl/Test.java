@@ -41,6 +41,9 @@ public class Test {
         CommonUtils.printList(result);
         result.clear();
         System.out.println();
+        root = BinaryTreeUtils.invertTreeLevel(root);
+        BinaryTreeUtils.preOrderTraversal(result,root);
+        CommonUtils.printList(result);
 
     }
 

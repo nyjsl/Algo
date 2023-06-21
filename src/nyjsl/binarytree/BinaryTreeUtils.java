@@ -147,7 +147,7 @@ public class BinaryTreeUtils {
     }
 
     /**
-     * 迭代法翻转二叉树
+     * 迭代法翻转二叉树  DFS
      * @param root 源二叉树
      * @return 结果二叉树
      * @param <T> 泛型
@@ -173,6 +173,12 @@ public class BinaryTreeUtils {
         return root;
     }
 
+    /**
+     * 层次遍历翻转二叉树 BFS
+     * @param root 源
+     * @return 结果
+     * @param <T> 泛型
+     */
     public static <T> TreeNode<T> invertTreeLevel(TreeNode<T> root) {
         if (null == root) {
             return root;
@@ -180,7 +186,19 @@ public class BinaryTreeUtils {
         Queue<TreeNode<T>> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
-
+            int size = queue.size();
+            while (size-- > 0) {
+                TreeNode cur = queue.poll();
+                TreeNode temp = cur.left;
+                cur.left = cur.right;
+                cur.right = temp;
+                if (cur.left != null) {
+                    queue.offer(cur.left);
+                }
+                if (null != cur.right) {
+                    queue.offer(cur.right);
+                }
+            }
         }
         return root;
     }
