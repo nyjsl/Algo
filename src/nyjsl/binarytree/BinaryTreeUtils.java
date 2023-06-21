@@ -2,6 +2,8 @@ package nyjsl.binarytree;
 
 
 
+import apple.laf.JRSUIUtils;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
@@ -128,4 +130,25 @@ public class BinaryTreeUtils {
             }
         }
     }
+
+    /**
+     * 翻转二叉树
+     * @param root 源二叉树
+     * @return 结果
+     * @param <T> 泛型
+     */
+    public static <T> TreeNode<T> invertTree(TreeNode<T> root) {
+        if (null == root) {
+            return root;
+        }
+        TreeNode<T> temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        invertTree(root.left);
+        invertTree(root.right);
+        return root;
+    }
+
+
+
 }

@@ -28,6 +28,16 @@ public class Test {
 //        System.out.println(StrUtils.replaceSpace("We are happy."));
 
 //        testTreeTraversalRecursion();
+//        testTreeTraversal();
+        TreeNode<String> root = buildTestTree();
+        root = BinaryTreeUtils.invertTree(root);
+        ArrayList result = new ArrayList();
+        BinaryTreeUtils.preOrderTraversal(result,root);
+        CommonUtils.printList(result);
+
+    }
+
+    private static void testTreeTraversal() {
         TreeNode<String> root = buildTestTree();
         ArrayList result = new ArrayList();
         BinaryTreeUtils.preOrderTraversal(result,root);
