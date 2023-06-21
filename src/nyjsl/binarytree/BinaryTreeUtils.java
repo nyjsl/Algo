@@ -2,9 +2,7 @@ package nyjsl.binarytree;
 
 
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 二叉树的遍历
@@ -126,6 +124,35 @@ public class BinaryTreeUtils {
                 result.add(cur.val);
                 cur = cur.right;
             }
+        }
+    }
+
+    /**
+     * 二叉树的层序遍历
+     * @param result 层序遍历结果
+     * @param root 根结点
+     * @param <T> 泛型
+     */
+    public static <T> void levelTraversal(ArrayList<ArrayList> result, TreeNode<T> root) {
+        if (null == root) {
+            return;
+        }
+        Queue<TreeNode<T>> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            ArrayList<T> level = new ArrayList<>();
+            while (size-- > 0) {
+                TreeNode<T> poll = queue.poll();
+                level.add(poll.val);
+                if (null != poll.left) {
+                    queue.add(poll.left);
+                }
+                if (null != poll.right) {
+                    queue.add(poll.right);
+                }
+            }
+            result.add(level);
         }
     }
 }

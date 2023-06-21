@@ -11,6 +11,7 @@ import nyjsl.linkedlist.MLinkedList;
 import nyjsl.str.StrUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Test {
 
@@ -28,6 +29,14 @@ public class Test {
 //        System.out.println(StrUtils.replaceSpace("We are happy."));
 
 //        testTreeTraversalRecursion();
+//        testTreeTraversal();
+        TreeNode<String> root = buildTestTree();
+        ArrayList<ArrayList> result = new ArrayList();
+        BinaryTreeUtils.levelTraversal(result,root);
+        CommonUtils.printList(result);
+    }
+
+    private static void testTreeTraversal() {
         TreeNode<String> root = buildTestTree();
         ArrayList result = new ArrayList();
         BinaryTreeUtils.preOrderTraversal(result,root);
@@ -72,6 +81,11 @@ public class Test {
      *          前序遍历结果    A   B  E  F  G  C  D
      *          中序遍历结果    E   B  G  F  A  C  D
      *          后序遍历结果    E   G  F  B  D  C  A
+     *          层次遍历结果
+     *                      [A],
+     *                      [B, C],
+     *                      [E, F, D],
+     *                      [G],
      *
      * @return
      */
