@@ -29,6 +29,12 @@ public class Test {
 
 //        testTreeTraversalRecursion();
 //        testTreeTraversal();
+//        testInvertTree();
+        System.out.println(BinaryTreeUtils.isSymthic(buildTestTree()));
+        System.out.println(BinaryTreeUtils.isSymthic(buildSythmeicTree()));
+    }
+
+    private static void testInvertTree() {
         TreeNode<String> root = buildTestTree();
         root = BinaryTreeUtils.invertTree(root);
         ArrayList result = new ArrayList();
@@ -44,7 +50,6 @@ public class Test {
         root = BinaryTreeUtils.invertTreeLevel(root);
         BinaryTreeUtils.preOrderTraversal(result,root);
         CommonUtils.printList(result);
-
     }
 
     private static void testTreeTraversal() {
@@ -109,6 +114,30 @@ public class Test {
         c.right =d;
         a.left = b;
         a.right = c;
+        return a;
+    }
+
+    /**
+     * 构建一颗对称二叉树
+     *                  A
+     *              B       B
+     *            D    C  C    D
+     * @return
+     */
+    private static TreeNode<String> buildSythmeicTree() {
+        TreeNode<String> a = new TreeNode<>("A");
+        TreeNode<String> b1 = new TreeNode<>("B");
+        TreeNode<String> b2 = new TreeNode<>("B");
+        TreeNode<String> d1 = new TreeNode<>("D");
+        TreeNode<String> c1 = new TreeNode<>("C");
+        TreeNode<String> c2 = new TreeNode<>("C");
+        TreeNode<String> d2 = new TreeNode<>("D");
+        b1.left = d1;
+        b1.right = c1;
+        b2.left = c2;
+        b2.right =d2;
+        a.left = b1;
+        a.right = b2;
         return a;
     }
 

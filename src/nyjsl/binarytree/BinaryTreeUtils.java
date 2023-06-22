@@ -203,6 +203,37 @@ public class BinaryTreeUtils {
         return root;
     }
 
+    /**
+     * 是否是对称二叉树
+     * @param root
+     * @return
+     * @param <T>
+     */
+    public static <T> boolean isSymthic(TreeNode<T> root) {
+        if (null == root) {
+            return true;
+        }
+        return compare(root.left, root.right);
+    }
+
+
+    private static <T> boolean compare(TreeNode<T> left, TreeNode<T> right) {
+        if (null == left && right == null) {
+            return true;
+        }
+        if (null == left && right != null) {
+            return false;
+        }
+        if (null == right && left != null) {
+            return false;
+        }
+        boolean outSide = compare(left.left, right.right);
+        boolean inSide = compare(left.right, right.left);
+        boolean middle = outSide && inSide;
+        return middle;
+
+    }
+
 
 
 }
