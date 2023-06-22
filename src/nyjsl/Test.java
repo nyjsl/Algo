@@ -30,6 +30,17 @@ public class Test {
 //        testTreeTraversalRecursion();
 //        testTreeTraversal();
 //        testInvertTree();
+//        testSythemmic();
+//        testTreeDepth();
+        System.out.println(BinaryTreeUtils.normalTreeNodeCount(buildTestTree()));
+    }
+
+    private static void testTreeDepth() {
+        System.out.println(BinaryTreeUtils.maxDepth(buildTestTree()));
+        System.out.println(BinaryTreeUtils.minDepth(buildTestTree()));
+    }
+
+    private static void testSythemmic() {
         System.out.println(BinaryTreeUtils.isSymthic(buildTestTree()));
         System.out.println(BinaryTreeUtils.isSymthic(buildSythmeicTree()));
     }

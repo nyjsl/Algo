@@ -206,7 +206,7 @@ public class BinaryTreeUtils {
     /**
      * 是否是对称二叉树
      * @param root
-     * @return
+     * @return 是否是对称二叉树
      * @param <T>
      */
     public static <T> boolean isSymthic(TreeNode<T> root) {
@@ -232,6 +232,61 @@ public class BinaryTreeUtils {
         boolean middle = outSide && inSide;
         return middle;
 
+    }
+
+    /**
+     * 求二叉树的最大深度 （最大深度其实就是根节点的高度）
+     * @param root 根结点
+     * @return 最大深度
+     * @param <T> 泛型
+     */
+    public static <T> int maxDepth(TreeNode<T> root) {
+        if (null == root) {
+            return 0;
+        }
+        int leftHeight = maxDepth(root.left);
+        int rightHeight = maxDepth(root.right);
+        int mid = 1 + Math.max(leftHeight, rightHeight);
+        return mid;
+    }
+
+    /**
+     * 求二叉树的最小深度 （根节点到叶子节点的最小高度）
+     * @param root 根节点
+     * @return 最小深度
+     * @param <T> 泛型
+     */
+    public static <T> int minDepth(TreeNode<T> root) {
+        if (null == root) {
+            return 0;
+        }
+        int leftDepth = minDepth(root.left);
+        int rightDepth = minDepth(root.right);
+        int mid;
+        if (root.left == null) {
+            mid = rightDepth+1;
+        } else if (root.right == null) {
+            mid = leftDepth+1;
+        } else{
+            mid = 1 + Math.min(leftDepth, rightDepth);
+        }
+        return mid;
+    }
+
+    /**
+     * 普通二叉树节点数量
+     * @param root 跟节点
+     * @return 节点数量
+     * @param <T> 泛型
+     */
+    public static <T> int normalTreeNodeCount(TreeNode<T> root) {
+        if (null == root) {
+            return 0;
+        }
+        int leftCount = normalTreeNodeCount(root.left);
+        int rightCount = normalTreeNodeCount(root.right);
+        int mid = 1 + leftCount + rightCount;
+        return mid;
     }
 
 
