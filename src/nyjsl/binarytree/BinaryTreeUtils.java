@@ -289,6 +289,37 @@ public class BinaryTreeUtils {
         return mid;
     }
 
+    /**
+     * 完全二叉树的节点数量
+     *   如果子树是满二叉树 节点数量直接是 2^height-1
+     *   否则继续遍历寻找
+     * @param root 根节点
+     * @return 节点数量
+     * @param <T> 泛型
+     */
+    public static <T> int completeTreeNodeCount(TreeNode<T> root) {
+        if (null == root) {
+            return 0;
+        }
+        int leftHeight = 0;
+        int rightHeight = 0;
+        TreeNode left = root;
+        TreeNode right = root;
+        while (left != null) {
+            leftHeight++;
+            left = left.left;
+        }
+        while (right != null) {
+            rightHeight++;
+            right = right.right;
+        }
+        if (leftHeight ==rightHeight) {
+            return (2<<leftHeight-1) -1;
+        }else{
+            return 1 + completeTreeNodeCount(root.left) + completeTreeNodeCount(root.right);
+        }
+    }
+
 
 
 }

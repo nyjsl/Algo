@@ -33,6 +33,7 @@ public class Test {
 //        testSythemmic();
 //        testTreeDepth();
         System.out.println(BinaryTreeUtils.normalTreeNodeCount(buildTestTree()));
+        System.out.println(BinaryTreeUtils.completeTreeNodeCount(buildSythmeicTree()));
     }
 
     private static void testTreeDepth() {
