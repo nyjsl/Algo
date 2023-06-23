@@ -320,26 +320,37 @@ public class BinaryTreeUtils {
         }
     }
 
+
     /**
      * 是否是平衡二叉树（左右子树，高度差绝对值不大于1）
-     * @param root 跟节点
+     * @param root 根节点
+     * @param <T> 泛型
+     */
+    public static <T> boolean isBalanceTree(TreeNode<T> root){
+        return balanceTreeHeight(root) != -1;
+    }
+    /**
+     * 平衡二叉树高度
+     * @param root 根节点
      * @return 平衡则返回高度，否则返回-1
      * @param <T> 泛型
      */
-    public static <T> int balanceTree(TreeNode<T> root) {
+    private static <T> int balanceTreeHeight(TreeNode<T> root) {
         if (null == root) {
             return 0;
         }
-        if (balanceTree(root.left) == -1) {
+        int leftHeight = balanceTreeHeight(root.left);
+        if ( leftHeight == -1) {
             return -1;
         }
-        if (balanceTree(root.right) == -1) {
+        int rightHeight = balanceTreeHeight(root.right);
+        if (rightHeight == -1) {
             return -1;
         }
-        if (Math.abs(balanceTree(root.left) - balanceTree(root.right)) > 1) {
+        if (Math.abs(leftHeight - rightHeight) > 1) {
             return -1;
         }else{
-            return 1 + Math.max(balanceTree(root.left) , balanceTree(root.right));
+            return 1 + Math.max(leftHeight , rightHeight);
         }
     }
 

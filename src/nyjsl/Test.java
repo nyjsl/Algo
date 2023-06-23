@@ -32,8 +32,13 @@ public class Test {
 //        testInvertTree();
 //        testSythemmic();
 //        testTreeDepth();
+        testTreeOpthions();
+    }
+
+    private static void testTreeOpthions() {
         System.out.println(BinaryTreeUtils.normalTreeNodeCount(buildTestTree()));
         System.out.println(BinaryTreeUtils.completeTreeNodeCount(buildSythmeicTree()));
+        System.out.println(BinaryTreeUtils.isBalanceTree(buildTestTree()));
     }
 
     private static void testTreeDepth() {
