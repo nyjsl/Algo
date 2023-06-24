@@ -35,7 +35,8 @@ public class Test {
 //        testTreeDepth();
 //        testTreeOpthions();
 //        testTreePaths();
-        System.out.println(BinaryTreeUtils.sumOfLeftChildren(buildTestTreeInt()));
+//        System.out.println(BinaryTreeUtils.sumOfLeftChildren(buildTestTreeInt()));
+        System.out.println(BinaryTreeUtils.bottomLeft(buildTestTree()));
     }
 
     private static void testTreePaths() {

@@ -3,6 +3,8 @@ package nyjsl.binarytree;
 
 
 
+import apple.laf.JRSUIUtils;
+
 import java.util.*;
 
 /**
@@ -414,6 +416,45 @@ public class BinaryTreeUtils {
         Integer sum = leftSum+rightSum;
         return sum;
     }
+
+    /**
+     * 给定一个二叉树，找到最后一行 最左边的值
+     * @param root 根二叉树
+     * @return 最后一行最左边的值
+     * @param <T>
+     */
+    public static <T> T bottomLeft(TreeNode<T> root) {
+        if (null != root) {
+            traversal(root,0);
+        }
+        return (T) result;
+    }
+
+    private static int maxDepth = Integer.MIN_VALUE;
+    private static Object result;
+
+    private static<T> void traversal(TreeNode<T> root,int depth) {
+        if (root.left == null && root.right == null) {
+            if (depth > maxDepth) {
+                maxDepth = depth;
+                result = root.val;
+            }
+            return;
+        }
+        if (null != root.left) {
+            depth++;
+            traversal(root.left,depth);
+            depth--;
+        }
+        if (null != root.right) {
+            depth++;
+            traversal(root.right, depth);
+            depth--;
+        }
+        return;
+    }
+
+
 
 
 }
