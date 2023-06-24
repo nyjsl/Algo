@@ -37,8 +37,18 @@ public class Test {
 //        testTreePaths();
 //        System.out.println(BinaryTreeUtils.sumOfLeftChildren(buildTestTreeInt()));
 //        System.out.println(BinaryTreeUtils.bottomLeft(buildTestTree()));
-        System.out.println(BinaryTreeUtils.hasSum(buildTestTreeInt(),11));
-        System.out.println(BinaryTreeUtils.hasSum(buildTestTreeInt(),8));
+//        System.out.println(BinaryTreeUtils.hasSum(buildTestTreeInt(),11));
+//        System.out.println(BinaryTreeUtils.hasSum(buildTestTreeInt(),8));
+        TreeNode<String> root = buildTestTree();
+        ArrayList<String> inOrder = new ArrayList<>();
+        BinaryTreeUtils.inOrderTraversal(inOrder,root);
+        ArrayList<String> postOrder = new ArrayList<>();
+        BinaryTreeUtils.afterOrderRecursion(postOrder,root);
+        TreeNode<String> result = BinaryTreeUtils.buildFrom(inOrder,postOrder);
+        ArrayList<String> res = new ArrayList<>();
+        BinaryTreeUtils.preOrderRecursion(res,result);
+        System.out.println(res);
+
     }
 
     private static void testTreePaths() {

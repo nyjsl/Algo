@@ -433,7 +433,7 @@ public class BinaryTreeUtils {
     private static int maxDepth = Integer.MIN_VALUE;
     private static Object result;
 
-    private static<T> void traversal(TreeNode<T> root,int depth) {
+    private static <T> void traversal(TreeNode<T> root,int depth) {
         if (root.left == null && root.right == null) {
             if (depth > maxDepth) {
                 maxDepth = depth;
@@ -492,6 +492,56 @@ public class BinaryTreeUtils {
         }
         return false;
 
+    }
+
+    /**
+     * 从中序与后序遍历序列构造二叉树
+     * @param inOrder 中序遍历结果
+     * @param postOrder 后序遍历结果
+     * @return
+     * @param <T>
+     */
+    public static <T> TreeNode<T> buildFrom(ArrayList<T> inOrder, ArrayList<T> postOrder) {
+        if (null == postOrder || postOrder.isEmpty()) {
+            return null;
+        }
+        //1.从后序遍历最后一个值中取中间节点
+        T val = postOrder.get(postOrder.size() - 1);
+        TreeNode<T> root = new TreeNode<>(val);
+        if (postOrder.size() == 1) return root;
+        //2.在中序遍历中找到 分割点的位置
+        int posAtInOrder = 0;
+        for (int i = 0; i < inOrder.size(); i++) {
+            if (inOrder.get(i) == val) {
+                posAtInOrder = i;
+                break;
+            }
+        }
+        //3.分隔中序遍历左右两侧
+        ArrayList<T> leftInOrder = new ArrayList<>();
+        for (int i = 0; i < posAtInOrder; i++) {
+            leftInOrder.add(inOrder.get(i));
+        }
+        System.out.println("leftInOrder："+leftInOrder);
+        ArrayList<T> rightInOrder = new ArrayList<>();
+        for (int i = posAtInOrder + 1; i < inOrder.size(); i++) {
+            rightInOrder.add(inOrder.get(i));
+        }
+        System.out.println("rightInOrder："+rightInOrder);
+        //4.分隔后序遍历左右两边,使用左中序数组大小作为切割点
+        ArrayList<T> leftPostOrder = new ArrayList<>();
+        for (int i = 0; i < leftInOrder.size(); i++) {
+            leftPostOrder.add(postOrder.get(i));
+        }
+        System.out.println("leftPostOrder："+leftPostOrder);
+        ArrayList<T> rightPostOrder = new ArrayList<>();
+        for (int i = leftInOrder.size(); i < postOrder.size() - 1; i++) {
+            rightPostOrder.add(postOrder.get(i));
+        }
+        System.out.println("rightPostOrder："+rightPostOrder);
+        root.left = buildFrom(leftInOrder,leftPostOrder);
+        root.right = buildFrom(rightInOrder, rightPostOrder);
+        return root;
     }
 
 }
