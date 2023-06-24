@@ -454,7 +454,44 @@ public class BinaryTreeUtils {
         return;
     }
 
+    public static boolean hasSum(TreeNode<Integer> root, int sum) {
+        if (null == root) {
+            return false;
+        }
+        return sumTraversal(root, sum- root.val);
+    }
 
+    /**
+     * 给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和
+     * @param root 根节点
+     * @param sum 目标和
+     * @return 存在返回true，不存在返回false
+     */
+    public static boolean sumTraversal(TreeNode<Integer> root, int sum) {
 
+        if (root.left == null && root.right == null) {
+            if (sum == 0) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+        if (null != root.left) {
+            sum = sum- root.left.val;
+            if(sumTraversal(root.left,sum)){
+                return true;
+            }
+            sum = sum+ root.left.val;
+        }
+        if (null != root.right) {
+            sum = sum- root.right.val;
+            if (sumTraversal(root.right, sum)) {
+                return true;
+            }
+            sum = sum + root.right.val;
+        }
+        return false;
+
+    }
 
 }
