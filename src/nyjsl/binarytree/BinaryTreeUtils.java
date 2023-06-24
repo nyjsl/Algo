@@ -369,6 +369,13 @@ public class BinaryTreeUtils {
         return result;
     }
 
+    /**
+     * 递归，回溯 遍历节点路径
+     * @param result 路径列表
+     * @param paths 路径
+     * @param root 根节点
+     * @param <T> 泛型
+     */
     private static <T> void traversal(List<List<T>> result, List<T> paths,TreeNode<T> root) {
         paths.add(root.val);
         if (root.left == null && root.right == null) {
@@ -385,6 +392,27 @@ public class BinaryTreeUtils {
             paths.remove(paths.size()-1);
         }
 
+    }
+
+    /**
+     * 二叉树的所有左叶子节点之合
+     *
+     * @return 所有左叶子节点之合
+     */
+    public static Integer sumOfLeftChildren(TreeNode<Integer> root) {
+        if (null == root) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            return 0;
+        }
+        Integer leftSum = sumOfLeftChildren(root.left);
+        if (null != root.left && root.left.left == null && root.left.right == null) {
+            leftSum = root.left.val;
+        }
+        Integer rightSum = sumOfLeftChildren(root.right);
+        Integer sum = leftSum+rightSum;
+        return sum;
     }
 
 

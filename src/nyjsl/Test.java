@@ -34,6 +34,11 @@ public class Test {
 //        testSythemmic();
 //        testTreeDepth();
 //        testTreeOpthions();
+//        testTreePaths();
+        System.out.println(BinaryTreeUtils.sumOfLeftChildren(buildTestTreeInt()));
+    }
+
+    private static void testTreePaths() {
         List<List<String>> paths = BinaryTreeUtils.binaryTreePaths(buildTestTree());
         CommonUtils.printList(paths);
     }
@@ -128,6 +133,30 @@ public class Test {
         TreeNode<String> e = new TreeNode<>("E");
         TreeNode<String> f = new TreeNode<>("F");
         TreeNode<String> g = new TreeNode<>("G");
+        f.left = g;
+        b.left = e;
+        b.right = f;
+        c.right =d;
+        a.left = b;
+        a.right = c;
+        return a;
+    }
+    /**
+     *                       1
+     *                 2          3
+     *             5      6          4
+     *                  7
+     *
+     * @return
+     */
+    private static TreeNode<Integer> buildTestTreeInt() {
+        TreeNode<Integer> a = new TreeNode<>(1);
+        TreeNode<Integer> b = new TreeNode<>(2);
+        TreeNode<Integer> c = new TreeNode<>(3);
+        TreeNode<Integer> d = new TreeNode<>(4);
+        TreeNode<Integer> e = new TreeNode<>(5);
+        TreeNode<Integer> f = new TreeNode<>(6);
+        TreeNode<Integer> g = new TreeNode<>(7);
         f.left = g;
         b.left = e;
         b.right = f;
