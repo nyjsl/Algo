@@ -354,6 +354,38 @@ public class BinaryTreeUtils {
         }
     }
 
+    /**
+     * 二叉树的所有路径
+     * @param root 根节点
+     * @return 路径列表集合
+     * @param <T> 泛型
+     */
+    public static <T> List<List<T>> binaryTreePaths(TreeNode<T> root) {
+        List<List<T>> result = new ArrayList<>();
+        if (null != root) {
+            List<T> paths = new ArrayList<>();
+            traversal(result, paths,root);
+        }
+        return result;
+    }
+
+    private static <T> void traversal(List<List<T>> result, List<T> paths,TreeNode<T> root) {
+        paths.add(root.val);
+        if (root.left == null && root.right == null) {
+            //注意一行，因为paths后面还会改变，所以不能直接使用paths
+            result.add(new ArrayList<>(paths));
+            return;
+        }
+        if (null != root.left) {
+            traversal(result,paths,root.left);
+            paths.remove(paths.size()-1);
+        }
+        if (null != root.right) {
+            traversal(result,paths,root.right);
+            paths.remove(paths.size()-1);
+        }
+
+    }
 
 
 }

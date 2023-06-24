@@ -11,6 +11,7 @@ import nyjsl.linkedlist.MLinkedList;
 import nyjsl.str.StrUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Test {
 
@@ -32,7 +33,9 @@ public class Test {
 //        testInvertTree();
 //        testSythemmic();
 //        testTreeDepth();
-        testTreeOpthions();
+//        testTreeOpthions();
+        List<List<String>> paths = BinaryTreeUtils.binaryTreePaths(buildTestTree());
+        CommonUtils.printList(paths);
     }
 
     private static void testTreeOpthions() {
