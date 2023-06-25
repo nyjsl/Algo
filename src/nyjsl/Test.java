@@ -11,7 +11,7 @@ import nyjsl.linkedlist.MLinkedList;
 import nyjsl.str.StrUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 public class Test {
 
@@ -30,9 +30,63 @@ public class Test {
 
 //        testTreeTraversalRecursion();
 //        testTreeTraversal();
+//        testInvertTree();
+//        testSythemmic();
+//        testTreeDepth();
+//        testTreeOpthions();
+//        testTreePaths();
+//        System.out.println(BinaryTreeUtils.sumOfLeftChildren(buildTestTreeInt()));
+//        System.out.println(BinaryTreeUtils.bottomLeft(buildTestTree()));
+//        System.out.println(BinaryTreeUtils.hasSum(buildTestTreeInt(),11));
+//        System.out.println(BinaryTreeUtils.hasSum(buildTestTreeInt(),8));
         TreeNode<String> root = buildTestTree();
-        ArrayList<ArrayList> result = new ArrayList();
-        BinaryTreeUtils.levelTraversal(result,root);
+        ArrayList<String> inOrder = new ArrayList<>();
+        BinaryTreeUtils.inOrderTraversal(inOrder,root);
+        ArrayList<String> postOrder = new ArrayList<>();
+        BinaryTreeUtils.afterOrderRecursion(postOrder,root);
+        TreeNode<String> result = BinaryTreeUtils.buildFrom(inOrder,postOrder);
+        ArrayList<String> res = new ArrayList<>();
+        BinaryTreeUtils.preOrderRecursion(res,result);
+        System.out.println(res);
+
+    }
+
+    private static void testTreePaths() {
+        List<List<String>> paths = BinaryTreeUtils.binaryTreePaths(buildTestTree());
+        CommonUtils.printList(paths);
+    }
+
+    private static void testTreeOpthions() {
+        System.out.println(BinaryTreeUtils.normalTreeNodeCount(buildTestTree()));
+        System.out.println(BinaryTreeUtils.completeTreeNodeCount(buildSythmeicTree()));
+        System.out.println(BinaryTreeUtils.isBalanceTree(buildTestTree()));
+    }
+
+    private static void testTreeDepth() {
+        System.out.println(BinaryTreeUtils.maxDepth(buildTestTree()));
+        System.out.println(BinaryTreeUtils.minDepth(buildTestTree()));
+    }
+
+    private static void testSythemmic() {
+        System.out.println(BinaryTreeUtils.isSymthic(buildTestTree()));
+        System.out.println(BinaryTreeUtils.isSymthic(buildSythmeicTree()));
+    }
+
+    private static void testInvertTree() {
+        TreeNode<String> root = buildTestTree();
+        root = BinaryTreeUtils.invertTree(root);
+        ArrayList result = new ArrayList();
+        BinaryTreeUtils.preOrderTraversal(result,root);
+        CommonUtils.printList(result);
+        result.clear();
+        System.out.println();
+        root = BinaryTreeUtils.invertTreeTraversal(root);
+        BinaryTreeUtils.preOrderTraversal(result,root);
+        CommonUtils.printList(result);
+        result.clear();
+        System.out.println();
+        root = BinaryTreeUtils.invertTreeLevel(root);
+        BinaryTreeUtils.preOrderTraversal(result,root);
         CommonUtils.printList(result);
     }
 
@@ -103,6 +157,54 @@ public class Test {
         c.right =d;
         a.left = b;
         a.right = c;
+        return a;
+    }
+    /**
+     *                       1
+     *                 2          3
+     *             5      6          4
+     *                  7
+     *
+     * @return
+     */
+    private static TreeNode<Integer> buildTestTreeInt() {
+        TreeNode<Integer> a = new TreeNode<>(1);
+        TreeNode<Integer> b = new TreeNode<>(2);
+        TreeNode<Integer> c = new TreeNode<>(3);
+        TreeNode<Integer> d = new TreeNode<>(4);
+        TreeNode<Integer> e = new TreeNode<>(5);
+        TreeNode<Integer> f = new TreeNode<>(6);
+        TreeNode<Integer> g = new TreeNode<>(7);
+        f.left = g;
+        b.left = e;
+        b.right = f;
+        c.right =d;
+        a.left = b;
+        a.right = c;
+        return a;
+    }
+
+    /**
+     * 构建一颗对称二叉树
+     *                  A
+     *              B       B
+     *            D    C  C    D
+     * @return
+     */
+    private static TreeNode<String> buildSythmeicTree() {
+        TreeNode<String> a = new TreeNode<>("A");
+        TreeNode<String> b1 = new TreeNode<>("B");
+        TreeNode<String> b2 = new TreeNode<>("B");
+        TreeNode<String> d1 = new TreeNode<>("D");
+        TreeNode<String> c1 = new TreeNode<>("C");
+        TreeNode<String> c2 = new TreeNode<>("C");
+        TreeNode<String> d2 = new TreeNode<>("D");
+        b1.left = d1;
+        b1.right = c1;
+        b2.left = c2;
+        b2.right =d2;
+        a.left = b1;
+        a.right = b2;
         return a;
     }
 
