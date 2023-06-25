@@ -39,6 +39,14 @@ public class Test {
 //        System.out.println(BinaryTreeUtils.bottomLeft(buildTestTree()));
 //        System.out.println(BinaryTreeUtils.hasSum(buildTestTreeInt(),11));
 //        System.out.println(BinaryTreeUtils.hasSum(buildTestTreeInt(),8));
+        testBuildFromOrders();
+
+        int[] elements = new int[]{3,2,1,6,0,5};
+        TreeNode<Integer> tree = BinaryTreeUtils.constructMaxTree(elements);
+        System.out.println();
+    }
+
+    private static void testBuildFromOrders() {
         TreeNode<String> root = buildTestTree();
         ArrayList<String> inOrder = new ArrayList<>();
         BinaryTreeUtils.inOrderTraversal(inOrder,root);
@@ -48,7 +56,6 @@ public class Test {
         ArrayList<String> res = new ArrayList<>();
         BinaryTreeUtils.preOrderRecursion(res,result);
         System.out.println(res);
-
     }
 
     private static void testTreePaths() {
